@@ -24,7 +24,7 @@ def sample_model(model, device, batch, size, temperature, condition=None):
     return row
 
 
-def load_model(model, size, checkpoint, device):
+def load_model(model, checkpoint, size, device):
     ckpt = torch.load(os.path.join('checkpoint', checkpoint))
 
     
