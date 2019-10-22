@@ -73,6 +73,7 @@ def train(epoch, loader, model, optimizer, scheduler, device):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--size', type=int, default=256)
+    parser.add_argument('--batch', type=int, default=128)
     parser.add_argument('--epoch', type=int, default=560)
     parser.add_argument('--lr', type=float, default=3e-4)
     parser.add_argument('--sched', type=str)
@@ -94,7 +95,7 @@ if __name__ == '__main__':
     )
 
     dataset = datasets.ImageFolder(args.path, transform=transform)
-    loader = DataLoader(dataset, batch_size=128, shuffle=True, num_workers=4)
+    loader = DataLoader(dataset, batch_size=args.batch, shuffle=True, num_workers=4)
 
     model = nn.DataParallel(VQVAE()).to(device)
 
